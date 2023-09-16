@@ -60,3 +60,18 @@ confirmBtn.addEventListener("click", (event) =>{
     runDialog.close();
     displayRun();
 })
+
+runContainer.addEventListener("click", (event) =>{
+    const target = event.target;
+    if (target.classList.contains("remove-btn")){
+        const runIdToRemove = parseInt(target.dataset.runId, 10);
+        console.log(`Removing run with ID: ${runIdToRemove}`);
+        removeRunFromArray(runIdToRemove);
+    }
+})
+
+function removeRunFromArray(runId){
+    myRuns.splice(runId, 1);
+    saveRunsToStorage;
+    displayRun();
+}
