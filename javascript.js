@@ -24,4 +24,14 @@ function displayRun(){
     
         runContainer.appendChild(runDiv);
     }
+
+    const checkboxes = document.querySelectorAll(".pr-checkbox");
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", (event) => {
+            const runId = parseInt(event.target.dataset.runId, 10);
+            myRuns[runIdId].read = event.target.checked;
+            saveRunsToStorage();
+        });
+    });
+
 }
