@@ -3,8 +3,6 @@ const addButton = document.getElementById("showDialog");
 const runDialog = document.getElementById("addRunDialog");
 const confirmBtn = runDialog.querySelector("#confirmBtn");
 
-
-
 let myRuns = [];
 
 function Run(date, distance, rpe, pr){
@@ -42,3 +40,7 @@ function displayRun(){
     });
 
 }
+
+addButton.addEventListener("click", () =>{
+    runDialog.showModal();
+})
