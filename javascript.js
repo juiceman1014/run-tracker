@@ -5,11 +5,11 @@ const confirmBtn = runDialog.querySelector("#confirmBtn");
 
 let myRuns = [];
 
-function Run(date, distance, rpe, pr){
+function Run(date, distance, rpe, prStatus){
     this.date = date,
     this.distance = distance,
     this.rpe = rpe,
-    this.pr = pr
+    this.pr = prStatus
 }
 
 function displayRun(){
@@ -23,7 +23,7 @@ function displayRun(){
         <p>Date: ${run.date}</p>
         <p>Distance: ${run.distance}</p>
         <p>RPE: ${run.rpe}</p>
-        <button class = "remove-btn" data-book-id="${i}">Remove Book</button>
+        <button class = "remove-btn" data-run-id="${i}">Remove Run</button>
         <input type="checkbox" class="pr-checkbox" data-book-id="${i}" ${run.pr ? 'checked' : ''}> PR
         `
     
@@ -43,4 +43,20 @@ function displayRun(){
 
 addButton.addEventListener("click", () =>{
     runDialog.showModal();
+})
+
+confirmBtn.addEventListener("click", (event) =>{
+    event.preventDefault();
+
+    const date = document.getElementById("date").value;
+    const distance = document.getElementById("distance").value;
+    const rpe = document.getElementById("rpe").value;
+    const prStatus = document.getElementById("prStatus").checked;
+
+    const newRun = new Run(date, distance, rpe, prStatus);
+    myRuns.push(newRun);
+
+    saveLibraryToStorage();
+    runDialog.close();
+    displayRun();
 })
