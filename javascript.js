@@ -1,3 +1,10 @@
+const runContainer = document.getElementById("bodyContainer");
+const addButton = document.getElementById("showDialog");
+const runDialog = document.getElementById("addRunDialog");
+const confirmBtn = runDialog.querySelector("#confirmBtn");
+
+
+
 let myRuns = [];
 
 function Run(date, distance, rpe, pr){
