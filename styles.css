@@ -9,6 +9,8 @@ body{
     margin: 0px;
     min-height: 100%;
     font-family: "Roboto", sans-serif;
+    background-color: #8c92ac;
+    color: white;
 }
 
 ul{
@@ -21,9 +23,9 @@ ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: peachpuff;
     padding: 50px;
-    background-color: #8A2BE2;
+    background-color: #49416d;
+    background: linear-gradient(to bottom, #49416d, #8c92ac);
 }
 
 .body-container{
@@ -37,15 +39,17 @@ ul{
 .footer{
     display: flex;
     justify-content: center;
-    background-color: peachpuff;
     padding: 25px;
-    background-color: #8A2BE2;
+    background-color: #49416d;
+    background: linear-gradient(to bottom, #8c92ac,#49416d);
 }
 
 .run-card{
     border: 2px solid black;
     margin: 10px;
     padding: 10px;
+    background-color: white;
+    color: black;
 }
 
 #website-logo{
@@ -58,7 +62,4 @@ ul{
     align-items: center;
 }
 
-button{
-    background-color: #8A2BE2;
-    color: white;
-}
+
