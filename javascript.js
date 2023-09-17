@@ -13,18 +13,20 @@ function Run(date, distance, rpe, prStatus){
 }
 
 function displayRun(){
-    bodyContainer.innerHtml = "";
+
+    runContainer.innerHTML = "";
+
     for (let i = 0; i < myRuns.length; i++){
         const run = myRuns[i];
 
         const runDiv = document.createElement("div");
         runDiv.classList.add("run-card");
-        runDiv.innerHtml = `
+        runDiv.innerHTML = `
         <p>Date: ${run.date}</p>
         <p>Distance: ${run.distance}</p>
         <p>RPE: ${run.rpe}</p>
         <button class = "remove-btn" data-run-id="${i}">Remove Run</button>
-        <input type="checkbox" class="pr-checkbox" data-book-id="${i}" ${run.pr ? 'checked' : ''}> PR
+        <input type="checkbox" class="pr-checkbox" data-run-id="${i}" ${run.pr ? 'checked' : ''}> PR
         `
     
         runContainer.appendChild(runDiv);
@@ -34,7 +36,7 @@ function displayRun(){
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", (event) => {
             const runId = parseInt(event.target.dataset.runId, 10);
-            myRuns[runIdId].read = event.target.checked;
+            myRuns[runId].pr = event.target.checked;
             saveRunsToStorage();
         });
     });
@@ -56,7 +58,7 @@ confirmBtn.addEventListener("click", (event) =>{
     const newRun = new Run(date, distance, rpe, prStatus);
     myRuns.push(newRun);
 
-    saveLibraryToStorage();
+    saveRunsToStorage();
     runDialog.close();
     displayRun();
 })
@@ -72,6 +74,18 @@ runContainer.addEventListener("click", (event) =>{
 
 function removeRunFromArray(runId){
     myRuns.splice(runId, 1);
-    saveRunsToStorage;
+    saveRunsToStorage();
     displayRun();
+}
+
+window.addEventListener("load", () =>{
+    if(localStorage.getItem("myRuns")) {
+        myRuns = JSON.parse(localStorage.getItem("myRuns"));
+        displayRun();
+    }
+
+});
+
+function saveRunsToStorage(){
+    localStorage.setItem("myRuns", JSON.stringify(myRuns));
 }
